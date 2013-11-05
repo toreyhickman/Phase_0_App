@@ -2,6 +2,11 @@ Phase0App::Application.routes.draw do
 
   root :to => 'pages#welcome'
 
+  get '/signin', :to => 'sessions#sign_in'
+  get '/signout', :to => 'sessions#sign_out'
+  get 'auth/:provider/callback', :to => 'sessions#auth'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
