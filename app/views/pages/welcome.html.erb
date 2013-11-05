@@ -5,3 +5,9 @@
 <% if session[:user_attributes] %>
   <p>You are logged in as <%= session[:user_attributes].name %> (<%= session[:user_attributes].id %>).</p>
 <% end %>
+
+<ul>
+  <% @challenge.instance_variables.each do |var| %>
+    <li><%= "#{var}: #{@challenge.instance_variable_get(var)}" %></li>
+  <% end %>
+</ul>
