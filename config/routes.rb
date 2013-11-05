@@ -1,4 +1,12 @@
 Phase0App::Application.routes.draw do
+
+  root :to => 'pages#welcome'
+
+  get '/signin', :to => 'sessions#sign_in'
+  get '/signout', :to => 'sessions#sign_out'
+  get 'auth/:provider/callback', :to => 'sessions#auth'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,7 +47,7 @@ Phase0App::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
