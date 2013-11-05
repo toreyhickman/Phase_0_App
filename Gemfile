@@ -13,6 +13,9 @@ gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-dbc', :git => 'https://github.com/Devbootcamp/omniauth-dbc.git'
 
+# For DBC API
+gem 'dbc-ruby'
+
 
 group :development, :test do
   gem 'rspec-rails'
