@@ -1,13 +1,13 @@
-<h1>Welcome</h1>
+<h1>Phase 0 App</h1>
 
-<p>You are on the landing page.</p>
+<% if !authenticated? %>
+  <p>Please sign in.</p>
+<% else %>
+  <h2>Cohorts in Phase 0</h2>
 
-<% if session[:user_attributes] %>
-  <p>You are logged in as <%= session[:user_attributes].name %> (<%= session[:user_attributes].id %>).</p>
+  <ul>
+    <% @cohorts.each do |cohort| %>
+      <li><%= cohort.name %></li>
+    <% end %>
+  </ul>
 <% end %>
-
-<ul>
-  <% @challenge.instance_variables.each do |var| %>
-    <li><%= "#{var}: #{@challenge.instance_variable_get(var)}" %></li>
-  <% end %>
-</ul>

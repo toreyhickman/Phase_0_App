@@ -8,13 +8,21 @@
 </head>
 <body>
 
-  <% if authenticated? %>
-    <%= link_to 'sign out', :signout %>
-  <% else %>
-    <%= link_to 'sign in', :signin %>
-  <% end %>
+  <header>
+    <div class="width800 center">
+      <% if authenticated? %>
+        <%= render "authenticated_header" %>
+      <% else %>
+        <%= link_to 'sign in', :signin %>
+      <% end %>
+    </div>
+  </header>
 
-  <%= yield %>
+  <div class="width800 center container">
+
+    <%= yield %>
+
+  </div>
 
 </body>
 </html>
