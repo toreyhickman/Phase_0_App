@@ -1,6 +1,6 @@
 Phase0App::Application.routes.draw do
 
-  root :to => 'pages#welcome'
+  root :to => 'pages#index'
 
   get '/signin', :to => 'sessions#sign_in'
   get '/signout', :to => 'sessions#sign_out'

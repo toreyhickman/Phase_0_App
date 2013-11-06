@@ -1,0 +1,13 @@
+<div class="sidebar width200 left gray_text">
+  <% cohorts.keys.sort.each do |location| %>
+    <% unless cohorts[location].empty? %>
+      <h2><%= location %></h2>
+
+      <div class="pad_bottom_2em">
+        <% cohorts[location].each do |cohort| %>
+          <p><%= link_to cohort.name, cohort_path(cohort) %></p>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

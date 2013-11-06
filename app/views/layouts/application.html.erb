@@ -20,7 +20,11 @@
 
   <div class="width800 center container">
 
-    <%= yield %>
+    <%= render 'layouts/cohorts_list_sidebar', :cohorts => @cohorts %>
+
+    <div class="content">
+      <%= yield %>
+    </div>
 
   </div>
 
