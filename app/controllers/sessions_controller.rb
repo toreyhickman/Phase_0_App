@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  skip_before_filter :authorize
+
   def sign_in
     redirect_to '/auth/dbc'
   end
