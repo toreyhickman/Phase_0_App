@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20131105222600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cohorts", force: true do |t|
-    t.integer  "socrates_id"
+  create_table "cohorts", primary_key: "socrates_id", force: true do |t|
     t.text     "name"
     t.text     "email"
     t.text     "location"
@@ -27,8 +26,7 @@ ActiveRecord::Schema.define(version: 20131105222600) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.integer  "socrates_id"
+  create_table "users", primary_key: "socrates_id", force: true do |t|
     t.integer  "cohort_id"
     t.string   "name"
     t.string   "email"
