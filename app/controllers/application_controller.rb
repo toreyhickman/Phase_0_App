@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def authorize
-    redirect_to root_path unless session[:socrates_id]
+    redirect_to 'pages#welcome' unless session[:socrates_id]
   end
 
   def authenticated?
