@@ -11,7 +11,7 @@
   <header>
     <div class="width800 center">
       <% if authenticated? %>
-        <%= render "authenticated_header" %>
+        <%= render "layouts/authenticated_header" %>
       <% else %>
         <%= link_to 'sign in', :signin %>
       <% end %>
