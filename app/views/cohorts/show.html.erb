@@ -1,1 +1,7 @@
-<h1>Cohort Show</h1>
+<h1><%= @cohort.name %></h1>
+
+<% @cohort.students.sort_by(&:name).each do |student| %>
+  <div class="pad_bottom_2em">
+    <h2><%= student.name %></h2>
+  </div>
+<% end %>

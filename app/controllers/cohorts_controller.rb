@@ -4,6 +4,7 @@ class CohortsController < ApplicationController
   end
 
   def show
+    @cohort = Cohort.includes(:students).find(params[:id])
   end
 
 end
