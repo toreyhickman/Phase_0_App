@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131105222600) do
     t.text     "bio"
     t.boolean  "intellectual_flag", default: false
     t.boolean  "cultural_flag",     default: false
+    t.boolean  "admin",             default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
