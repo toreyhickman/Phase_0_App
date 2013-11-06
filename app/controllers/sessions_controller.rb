@@ -11,8 +11,6 @@ class SessionsController < ApplicationController
 
   def auth
     authenticated_user_attributes = request.env['omniauth.auth'].info
-    puts "********************************************"
-    puts session[:socrates_id]
     session[:socrates_id] = authenticated_user_attributes.id
     token = request.env['omniauth.auth'].credentials
     session[:oauth_token] = token_as_hash(token)
