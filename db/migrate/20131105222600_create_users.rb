@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text        :bio
       t.boolean     :intellectual_flag, default: false
       t.boolean     :cultural_flag, default: false
+      t.boolean     :admin, default: false
 
       t.timestamps
     end

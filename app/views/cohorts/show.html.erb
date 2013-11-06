@@ -1,0 +1,7 @@
+<h1><%= @cohort.name %></h1>
+
+<% @cohort.students.sort_by(&:name).each do |student| %>
+  <% unless student.admin %>
+    <%= render 'student_info_block', student: student %>
+  <% end %>
+<% end %>

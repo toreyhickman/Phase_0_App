@@ -1,10 +1,12 @@
 Phase0App::Application.routes.draw do
 
-  root :to => 'pages#welcome'
+  root :to => 'pages#index'
 
   get '/signin', :to => 'sessions#sign_in'
   get '/signout', :to => 'sessions#sign_out'
   get 'auth/:provider/callback', :to => 'sessions#auth'
+
+  resources :cohorts, only: [:index, :show]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

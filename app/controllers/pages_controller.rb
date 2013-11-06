@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
 
-  skip_before_filter :authorize, :only => [:welcome]
+  skip_before_filter :authorize, :only => [:index]
+  skip_before_filter :get_cohorts, :only => [:index]
 
-  def welcome
-    @cohorts = Cohort.not_started.not_melt_or_hold
+  def index
+    redirect_to cohorts_path if authenticated?
+    render layout: "landing"
   end
 end

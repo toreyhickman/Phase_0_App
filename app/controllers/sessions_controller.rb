@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def sign_out
     session.clear
-    redirect_to root_path
+    redirect_to '/'
   end
 
   def auth
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     token = request.env['omniauth.auth'].credentials
     session[:oauth_token] = token_as_hash(token)
 
-    redirect_to root_path
+    redirect_to cohorts_path
   end
 
   private

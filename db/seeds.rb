@@ -28,6 +28,8 @@ users.each do |u|
   user.twitter = u.profile[:twitter]
   user.blog_url = u.profile[:blog]
   user.bio = u.bio
+  user.admin = true if u.roles.include?("editor") || u.roles.include?("admin") || u.roles.include?("ta")
+
 
   user.save
 end
