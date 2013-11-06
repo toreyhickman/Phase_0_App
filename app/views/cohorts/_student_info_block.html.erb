@@ -1,3 +1,41 @@
 <div class="pad_bottom_2em">
-  <h2><%= student.name %></h2>
+  <div class="float_wrapper student_header_wrapper">
+    <h2 class="left">
+      <%= student.name %>
+      <span class="pad_left_half_em gray_text">
+        <i class="fa fa-flag threequarter_size <%= 'red_flag' if student.intellectual_flag %>"></i>
+      </span>
+
+      <span class="pad_left_half_em gray_text">
+        <i class="fa fa-flag threequarter_size <%= 'red_flag' if student.cultural_flag %>"></i>
+      </span>
+    </h2>
+    <p class="right student_contact_wrapper">
+
+      <span class="pad_left_half_em">
+        <%= link_to student.github do %><i class="fa fa-github-alt fa-lg"></i><% end %>
+      </span>
+
+      <span class="pad_left_half_em">
+        <%= link_to student.twitter do %><i class="fa fa-twitter fa-lg"></i><% end %>
+      </span>
+
+      <span class="pad_left_half_em">
+        <%= mail_to student.email do %><i class="fa fa-envelope fa-lg"></i><% end %>
+      </span>
+    </p>
+  </div>
+
+  <div class="left width100">
+  </div>
+
+  <div class="student_bio_wrap pad_bottom_2em">
+    <p>
+      <% if student.bio == "" || student.bio == nil %>
+        No bio available for <%= student.name %>
+      <% else %>
+        <%= student.bio %>
+      <% end %>
+    </p>
+  </div>
 </div>
