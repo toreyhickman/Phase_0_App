@@ -35,6 +35,7 @@
 
 $header_bg: #333333;
 $light_gray: #efefef;
+$middle_gray: #999999;
 
 
 
@@ -110,4 +111,12 @@ h2 {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: .5em;
+}
+
+.gray_text {
+  color: $middle_gray;
+}
+
+.center_text {
+  text-align: center;
 }
