@@ -2,7 +2,16 @@
   <span class="left"><%= current_user.name %></span>
 </div>
 <div class="right">
-  <span class="right"><%= link_to 'sign out', :signout %></span>
+  <span class="right pad_left_1em">
+    <%= link_to signout_path do %>
+      <i class="fa fa-sign-out fa-lg"></i>
+    <% end %>
+  </span>
+  <span class="right pad-left_1em">
+    <%= link_to root_path do %>
+      <i class="fa fa-home fa-lg"></i>
+    <% end %>
+  </span>
 </div>
 <div class="center_text gray_text">
   <span>Phase 0 App</span>
