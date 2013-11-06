@@ -1,2 +1,2 @@
-<span class="left"><%= session[:user_attributes].name %></span>
+<span class="left"><%= current_user.name %></span>
 <span class="right"><%= link_to 'sign out', :signout %></span>
