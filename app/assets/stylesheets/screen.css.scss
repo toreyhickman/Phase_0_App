@@ -16,6 +16,8 @@
     Variables
     Layout
     Typography
+    Icons
+    Corners
 
     */
 
@@ -36,6 +38,9 @@
 $light_gray: #efefef;
 $middle_gray: #999999;
 $dark_gray: #333333;
+
+$red: #603535;
+$green: #206020;
 
 
 
@@ -78,6 +83,27 @@ header {
   margin-left: 200px;
 }
 
+.student_wrapper {
+  border-bottom: 1px dashed $middle_gray;
+
+  &:last-child {
+    border: none;
+  }
+}
+
+.student_image_and_bio_wrapper {
+  overflow: auto;
+}
+
+.student_bio_wrap {
+  width: 460px;
+  margin-left: 140px;
+}
+
+.width100 {
+  width: 100px;
+}
+
 .width800 {
   width: 800px;
 }
@@ -95,12 +121,24 @@ header {
   float: right;
 }
 
+.float_wrapper {
+  overflow: auto;
+}
+
 .pad_bottom_2em {
   padding-bottom: 2em;
 }
 
+.pad_left_half_em {
+  padding-left: .5em;
+}
+
 .pad_left_1em {
   padding-left: 1em;
+}
+
+.margin_bottom_2em {
+  margin-bottom: 2em;
 }
 
 
@@ -126,6 +164,10 @@ h2 {
   margin-bottom: .5em;
 }
 
+.threequarter_size {
+  font-size: .75em;
+}
+
 .gray_text {
   color: $middle_gray;
 }
@@ -143,4 +185,36 @@ h2 {
   a:hover {
     color: $dark_gray;
   }
+}
+
+.student_contact_wrapper {
+  a, a:visited, a:hover {
+    color: $middle_gray;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: $dark_gray;
+  }
+}
+
+
+
+
+/* $ICONS *********************************** */
+
+.red_flag {
+  color: $red;
+}
+
+.green_flag {
+  color: $green
+}
+
+
+
+/* $CORNERS ********************************* */
+
+.round_corners_8 {
+  border-radius: 8px;
 }

@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'font-awesome-sass'
+gem 'gravtastic'
 
 # For authenticating
 gem 'oauth2', '~>0.8.0'
