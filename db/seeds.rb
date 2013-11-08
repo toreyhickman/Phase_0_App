@@ -43,3 +43,26 @@ exercises.each do |e|
   exercise.title = e.title
   exercise.save
 end
+
+# Seed all exercise attempts
+
+cohorts = Cohort.not_started.not_melt_or_hold
+
+cohorts.each do |cohort|
+  cohort.students.each do |student|
+
+    exercise_attempts = DBC::ExerciseAttempt.all(student.socrates_id)
+
+    exercise_attempts.each do |exercise_attempt|
+
+      data = { exercise_id: exercise_attempt.exercise_id,
+               user_id: student.socrates_id,
+               code: exercise_attempt.code,
+               submitted_at: exercise_attempt.created_at }
+
+      found_attempt = ExerciseAttempt.where(exercise_id: exercise_attempt.exercise_id, submitted_at: exercise_attempt.created_at)
+
+      ExerciseAttempt.create(data) if found_attempt.empty?
+    end
+  end
+end
