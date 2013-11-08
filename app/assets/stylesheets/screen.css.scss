@@ -162,6 +162,15 @@ h2 {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: .5em;
+
+  a, a:visited, a:hover {
+    color: $dark_gray;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $middle_gray;
+  }
 }
 
 .threequarter_size {

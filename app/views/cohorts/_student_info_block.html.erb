@@ -1,7 +1,7 @@
 <div class="student_wrapper pad_bottom_2em margin_bottom_2em">
   <div class="float_wrapper student_header_wrapper">
     <h2 class="left">
-      <%= student.name %>
+      <%= link_to student.name, user_path(student) %>
       <span class="pad_left_half_em gray_text">
         <i class="fa fa-flag threequarter_size <%= 'red_flag' if student.intellectual_flag %>"></i>
       </span>
@@ -28,7 +28,7 @@
 
   <div class="student_image_and_bio_wrapper">
     <div class="left width100">
-      <%= image_tag student.gravatar_url, class: "round_corners_8" %>
+      <%= link_to (image_tag student.gravatar_url, class: "round_corners_8"), user_path(student) %>
     </div>
 
     <div class="student_bio_wrap pad_bottom_2em">
