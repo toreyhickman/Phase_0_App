@@ -89,6 +89,10 @@ header {
   &:last-child {
     border: none;
   }
+
+  &:first-child {
+    border-bottom: 1px dashed $middle_gray;
+  }
 }
 
 .student_image_and_bio_wrapper {
@@ -98,6 +102,10 @@ header {
 .student_bio_wrap {
   width: 460px;
   margin-left: 140px;
+}
+
+.width25 {
+  width: 25px;
 }
 
 .width100 {
@@ -125,6 +133,10 @@ header {
   overflow: auto;
 }
 
+.pad_bottom_1em {
+  padding-bottom: 1em;
+}
+
 .pad_bottom_2em {
   padding-bottom: 2em;
 }
@@ -137,10 +149,25 @@ header {
   padding-left: 1em;
 }
 
+.pad_left_2em {
+  padding-left: 2em;
+}
+
 .margin_bottom_2em {
   margin-bottom: 2em;
 }
 
+.margin_bottom_quarter_em {
+  margin-bottom: .25em;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline_block {
+  display: inline-block;
+}
 
 
 /* $TYPOGRAPHY ****************************** */
@@ -150,13 +177,24 @@ body {
   font-size: 14px;
   line-height: 1.4em;
   color: $dark_gray;
+
+  a, a:visited, a:hover {
+    color: $middle_gray;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $dark_gray;
+  }
 }
 
 h1 {
   font-size: 1.8em;
   font-weight: bold;
   margin-bottom: 1em;
+
 }
+
 
 h2 {
   font-size: 1.2em;
@@ -171,6 +209,7 @@ h2 {
   a:hover {
     color: $middle_gray;
   }
+
 }
 
 .threequarter_size {
@@ -186,14 +225,6 @@ h2 {
 }
 
 .sidebar {
-  a, a:visited, a:hover {
-    color: $middle_gray;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: $dark_gray;
-  }
 }
 
 .student_contact_wrapper {
@@ -210,13 +241,14 @@ h2 {
 
 
 
+
 /* $ICONS *********************************** */
 
-.red_flag {
+.red {
   color: $red;
 }
 
-.green_flag {
+.green {
   color: $green
 }
 

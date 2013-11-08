@@ -1,1 +1,38 @@
-<h1>User Show Page</h1>
+<h1 class ="margin_bottom_quarter_em"><%= @student.name %></h1>
+<p class="margin_bottom_2em"><%= link_to @student.cohort.name, cohort_path(@student.cohort) %></p>
+
+<%= render 'student_info_block', student: @student %>
+
+<h2 class="pad_bottom_1em">
+  <span class="width25 inline_block">
+    <% if @student.attempted_exercises.uniq.count == @exercises.count %>
+      <i class="fa fa-check-circle green"></i>
+    <% else %>
+      <i class="fa fa-times-circle red"></i>
+    <% end %>
+  </span>
+  <span class="">
+    Exercises
+  </span>
+</h2>
+
+<% @exercises.each do |exercise| %>
+
+  <div class="pad_bottom_2em">
+    <p>
+      <span class="width25 inline_block">
+        <i class="fa <%= @student.attempted_exercises.include?(exercise) ? 'fa-check-circle green' : 'fa-times-circle red' %>"></i>
+      </span>
+
+      <%= link_to exercise.title, "http://socrates.devbootcamp.com/exercises/#{exercise.socrates_id}" %>
+    </p>
+    <div>
+      <% if @attempts_by_exercise_id[exercise.socrates_id] %>
+        <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
+          <p class="pad_left_2em"><%= "Attempt #{index +1}" %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
