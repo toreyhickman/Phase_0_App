@@ -4,4 +4,7 @@ class User < ActiveRecord::Base
 
 
   belongs_to :cohort
+
+  has_many :exercise_attempts
+  has_many :attempted_exercises, through: :exercise_attempts, source: :exercise
 end
