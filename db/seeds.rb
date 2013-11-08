@@ -33,3 +33,13 @@ users.each do |u|
 
   user.save
 end
+
+# Seed all exercises
+exercises = DBC::Exercise.all
+
+exercises.each do |e|
+  exercise = Exercise.find_or_initialize_by(socrates_id: e.id)
+  exercise.socrates_id = e.id unless exercise.socrates_id
+  exercise.title = e.title
+  exercise.save
+end
