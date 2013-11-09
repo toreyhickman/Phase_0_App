@@ -1,3 +1,6 @@
+require 'benchmark'
+puts (Benchmark.realtime {
+
 # Seed all of the cohorts
 cohorts = DBC::Cohort.all
 
@@ -66,3 +69,5 @@ cohorts.each do |cohort|
     end
   end
 end
+
+}.to_f/60).to_s + " minutes"
