@@ -35,6 +35,7 @@
           <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
             <div class="margin_1em">
               <p><%= "Attempt #{index +1}:" %></p>
+              <p class="threequarter_size"><%= attempt.submitted_at.to_formatted_s(:long) %></p>
               <%= simple_format(attempt.code, class: 'code_block padding_bottom_1em') %>
             </div>
           <% end %>
