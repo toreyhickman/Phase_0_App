@@ -3,7 +3,7 @@
 
 <%= render 'student_info_block', student: @student %>
 
-<h2 class="pad_bottom_1em">
+<h2 class="">
   <span class="width25 inline_block">
     <% if @student.attempted_exercises.uniq.count == @exercises.count %>
       <i class="fa fa-check-circle green"></i>
@@ -16,31 +16,40 @@
   </span>
 </h2>
 
-<% @exercises.each do |exercise| %>
+<div class="exercise_attempts_wrapper">
 
-  <div class="pad_bottom_2em gray_text">
-    <p>
-      <span class="width25 inline_block">
-        <i class="fa <%= @student.attempted_exercises.include?(exercise) ? 'fa-check-circle green' : 'fa-times-circle red' %>"></i>
-      </span>
+  <p class="pad_bottom_2em gray_text">
+    <span class="exercise_sub_selector">All</span>
+    <span class="exercise_sub_selector pad_left_1em">Complete (<%= @student.attempted_exercises.uniq.count %>)</span>
+    <span class="exercise_sub_selector pad_left_1em">Incomplete (<%= @exercises.count - @student.attempted_exercises.uniq.count %>)</span>
+  </p>
 
-      <%= link_to exercise.title, "http://socrates.devbootcamp.com/exercises/#{exercise.socrates_id}" %>
-    </p>
+  <% @exercises.each do |exercise| %>
+    <% completed = @student.attempted_exercises.include?(exercise) %>
 
-    <% if @attempts_by_exercise_id[exercise.socrates_id] %>
+    <div class="pad_bottom_2em gray_text exercise_attempt_wrapper <%= completed ? 'complete' : 'incomplete' %>">
+      <p>
+        <span class="width25 inline_block">
+          <i class="fa <%= completed ? 'fa-check-circle green' : 'fa-times-circle red' %>"></i>
+        </span>
 
-      <p class="attempts_toggle pad_left_30 threequarter_size">show <%= @attempts_by_exercise_id[exercise.socrates_id].count %> attempts</p>
+        <%= link_to exercise.title, "http://socrates.devbootcamp.com/exercises/#{exercise.socrates_id}" %>
+      </p>
 
-      <div class="hidden attempt_details margin_top_1em margin_left_30 border_middle_gray round_corners_8 bg_white">
-          <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
-            <div class="margin_1em">
-              <p><%= "Attempt #{index +1}:" %></p>
-              <p class="threequarter_size"><%= attempt.submitted_at.to_formatted_s(:long) %></p>
-              <%= simple_format(attempt.code, class: 'code_block padding_bottom_1em') %>
-            </div>
-          <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <% if @attempts_by_exercise_id[exercise.socrates_id] %>
 
+        <p class="attempts_toggle pad_left_30 threequarter_size">show <%= @attempts_by_exercise_id[exercise.socrates_id].count %> attempts</p>
+
+        <div class="hidden attempt_details margin_top_1em margin_left_30 border_middle_gray round_corners_8 bg_white">
+            <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
+              <div class="margin_1em">
+                <p><%= "Attempt #{index +1}:" %></p>
+                <p class="threequarter_size"><%= attempt.submitted_at.to_formatted_s(:long) %></p>
+                <%= simple_format(attempt.code, class: 'code_block pad_bottom_2em') %>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

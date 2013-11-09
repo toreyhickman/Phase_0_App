@@ -15,9 +15,33 @@ UserExerciseAttemptDetailToggler = {
   }
 }
 
+UserExerciseAttemptToggler = {
+  init: function() {
+    $(document).on('click', '.exercise_sub_selector', this.toggle)
+  },
+
+  toggle: function() {
+    str = $(this).text()
+
+    if (str === "All") {
+      $(".exercise_attempt_wrapper").show()
+    }
+    else if (str.indexOf("Complete (") != -1) {
+      $(".exercise_attempt_wrapper.complete").show()
+      $(".exercise_attempt_wrapper.incomplete").hide()
+    }
+    else {
+      $(".exercise_attempt_wrapper.incomplete").show()
+      $(".exercise_attempt_wrapper.complete").hide()
+    }
+  }
+}
+
 
 $(document).ready(function() {
 
   UserExerciseAttemptDetailToggler.init()
+
+  UserExerciseAttemptToggler.init()
 
 })
