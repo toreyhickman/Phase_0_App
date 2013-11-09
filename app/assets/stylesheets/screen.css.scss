@@ -16,8 +16,9 @@
     Variables
     Layout
     Typography
-    Icons
     Corners
+    Interactivity
+    Display
 
     */
 
@@ -35,11 +36,11 @@
 
 /* $VARIABLES ******************************* */
 
-$light_gray: #efefef;
+$light_gray: #f9f9f9;
 $middle_gray: #999999;
 $dark_gray: #333333;
 
-$red: #603535;
+$red: #cc3535;
 $green: #206020;
 
 
@@ -70,6 +71,7 @@ header {
   }
 
   a:hover {
+    color: $light_gray;
     text-decoration: underline;
   }
 
@@ -133,6 +135,10 @@ header {
   overflow: auto;
 }
 
+.border_middle_gray {
+  border: 1px solid $middle_gray;
+}
+
 .pad_bottom_1em {
   padding-bottom: 1em;
 }
@@ -153,12 +159,32 @@ header {
   padding-left: 2em;
 }
 
+.pad_left_30 {
+  padding-left: 30px;
+}
+
+.margin_1em {
+  margin: 1em;
+}
+
 .margin_bottom_2em {
   margin-bottom: 2em;
 }
 
 .margin_bottom_quarter_em {
   margin-bottom: .25em;
+}
+
+.margin_left_30 {
+  margin-left: 30px;
+}
+
+.margin_top_1em {
+  margin-top: 1em;
+}
+
+.hidden {
+  display: none;
 }
 
 .inline {
@@ -212,19 +238,29 @@ h2 {
 
 }
 
+.code_block {
+  font-family: "Lucida Console";
+  color: $dark_gray;
+}
+
 .threequarter_size {
   font-size: .75em;
 }
 
 .gray_text {
   color: $middle_gray;
+
+  a, a:visited, a:hover {
+    color: $dark_gray;
+  }
+
+  a:hover {
+    color: $middle_gray;
+  }
 }
 
 .center_text {
   text-align: center;
-}
-
-.sidebar {
 }
 
 .student_contact_wrapper {
@@ -241,21 +277,32 @@ h2 {
 
 
 
+/* $CORNERS ********************************* */
+.round_corners_8 {
+  border-radius: 8px;
+}
 
-/* $ICONS *********************************** */
+
+
+
+/* $INTERACTIVITY *************************** */
+.attempts_toggle:hover {
+  cursor: pointer;
+}
+
+
+
+
+/* $DISPLAY ********************************* */
 
 .red {
   color: $red;
 }
 
 .green {
-  color: $green
+  color: $green;
 }
 
-
-
-/* $CORNERS ********************************* */
-
-.round_corners_8 {
-  border-radius: 8px;
+.bg_white {
+  background-color: white;
 }

@@ -18,7 +18,7 @@
 
 <% @exercises.each do |exercise| %>
 
-  <div class="pad_bottom_2em">
+  <div class="pad_bottom_2em gray_text">
     <p>
       <span class="width25 inline_block">
         <i class="fa <%= @student.attempted_exercises.include?(exercise) ? 'fa-check-circle green' : 'fa-times-circle red' %>"></i>
@@ -26,13 +26,20 @@
 
       <%= link_to exercise.title, "http://socrates.devbootcamp.com/exercises/#{exercise.socrates_id}" %>
     </p>
-    <div>
-      <% if @attempts_by_exercise_id[exercise.socrates_id] %>
-        <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
-          <p class="pad_left_2em"><%= "Attempt #{index +1}" %></p>
-        <% end %>
-      <% end %>
-    </div>
+
+    <% if @attempts_by_exercise_id[exercise.socrates_id] %>
+
+      <p class="attempts_toggle pad_left_30 threequarter_size">show <%= @attempts_by_exercise_id[exercise.socrates_id].count %> attempts</p>
+
+      <div class="hidden attempt_details margin_top_1em margin_left_30 border_middle_gray round_corners_8 bg_white">
+          <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
+            <div class="margin_1em">
+              <p><%= "Attempt #{index +1}:" %></p>
+              <%= simple_format(attempt.code, class: 'code_block padding_bottom_1em') %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
