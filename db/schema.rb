@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111004605) do
+ActiveRecord::Schema.define(version: 20131111033114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "challenges", primary_key: "socrates_id", force: true do |t|
+    t.string "name"
+  end
 
   create_table "cohorts", primary_key: "socrates_id", force: true do |t|
     t.text     "name"
