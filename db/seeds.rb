@@ -1,6 +1,9 @@
 require 'benchmark'
 require 'date'
 
+
+
+
 def calculate_current_week(start_date)
   current_week = 12 - (Date.parse(start_date) - Date.today).to_i/7
 
@@ -8,6 +11,9 @@ def calculate_current_week(start_date)
   return 13 if current_week > 12
   current_week
 end
+
+
+
 
 puts (Benchmark.realtime {
 
@@ -56,6 +62,16 @@ exercises.each do |e|
   exercise.socrates_id = e.id unless exercise.socrates_id
   exercise.title = e.title
   exercise.save
+end
+
+# Seed all challenges
+challenges = DBC::Challenge.all
+
+challenges.each do |c|
+  challenge = Challenge.find_or_initialize_by(socrates_id: c.id)
+  challenge.socrates_id = c.id unless challenge.socrates_id
+  challenge.name = c.name
+  challenge.save
 end
 
 # Seed all exercise attempts
