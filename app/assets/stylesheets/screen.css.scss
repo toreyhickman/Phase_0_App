@@ -144,6 +144,10 @@ header {
   padding: 1em;
 }
 
+.pad_bottom_0 {
+  padding-bottom: 0;
+}
+
 .pad_bottom_1em {
   padding-bottom: 1em;
 }
@@ -168,12 +172,20 @@ header {
   padding-left: 30px;
 }
 
+.pad_top_half_em {
+  padding-top: .5em;
+}
+
 .pad_top_2em {
   padding-top: 2em;
 }
 
 .margin_1em {
   margin: 1em;
+}
+
+.margin_bottom_0 {
+  margin-bottom: 0;
 }
 
 .margin_bottom_2em {
