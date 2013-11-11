@@ -3,23 +3,93 @@
 
 <%= render 'student_info_block', student: @student %>
 
+<div class="user_data_tabs">
+  <div class="user_data_tab pad_1em left active_tab">
+    <h2 class="inline">
+      <span class="width25 inline_block">
+        <% if @weeks.map(&:challenges).reduce(&:+) - @student.attempted_challenges == [] %>
+          <i class="fa fa-check-circle green"></i>
+        <% else %>
+          <i class="fa fa-times-circle red"></i>
+        <% end %>
+      </span>
+      <span>
+        Challenges
+      </span>
+    </h2>
+  </div>
 
-<div class="user_data_tab pad_1em left active_tab">
-  <h2 class="inline">
-    <span class="width25 inline_block">
-      <% if @student.attempted_exercises.uniq.count == @exercises.count %>
-        <i class="fa fa-check-circle green"></i>
-      <% else %>
-        <i class="fa fa-times-circle red"></i>
-      <% end %>
-    </span>
-    <span>
-      Exercises
-    </span>
-  </h2>
+  <div class="user_data_tab pad_1em left">
+    <h2 class="inline">
+      <span class="width25 inline_block">
+        <% if @student.attempted_exercises.uniq.count == @exercises.count %>
+          <i class="fa fa-check-circle green"></i>
+        <% else %>
+          <i class="fa fa-times-circle red"></i>
+        <% end %>
+      </span>
+      <span>
+        Exercises
+      </span>
+    </h2>
+  </div>
 </div>
 
 
+<!-- Show challenge attempts -->
+<div class="challenge_attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
+
+  <% @weeks.each do |week| %>
+    <% completed = week.challenges - @student.attempted_challenges == [] %>
+
+    <div class="pad_bottom_2em gray_text week_wrapper <%= completed ? 'complete' : 'incomplete' %>">
+
+      <div class="pad_bottom_1em">
+        <h2 class="inline">
+          <span class="width25 inline_block">
+            <% if completed %>
+              <i class="fa fa-check-circle green"></i>
+            <% else %>
+              <i class="fa fa-times-circle red"></i>
+            <% end %>
+          </span>
+          <span>
+            <%= week.name %>
+          </span>
+        </h2>
+      </div>
+
+      <% week.challenges.each do |challenge| %>
+        <div class="pad_bottom_1em pad_left_30">
+          <p>
+            <span class="width25 inline_block">
+              <i class="fa <%= @student.attempted_challenges.include?(challenge) ? 'fa-check-circle green' : 'fa-times-circle red' %>"></i>
+            </span>
+
+            <%= link_to challenge.name, "http://socrates.devbootcamp.com/challenges/#{challenge.socrates_id}" %>
+          </p>
+
+          <% if @attempts_by_challenge_id[challenge.socrates_id] %>
+
+            <p class="attempts_toggle pad_left_30 threequarter_size">show <%= @attempts_by_challenge_id[challenge.socrates_id].count %> attempts</p>
+
+            <div class="hidden attempt_details margin_top_1em margin_left_30">
+              <% @attempts_by_challenge_id[challenge.socrates_id].each_with_index do |attempt, index| %>
+                <div class="margin_1em">
+                  <p><%= link_to "Attempt #{index +1}", attempt.repo %></p>
+                  <p class="threequarter_size"><%= attempt.submitted_at.to_formatted_s(:long) if attempt.submitted_at %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+<!-- Show exercise attempts -->
 <div class="exercise_attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
 
   <p class="pad_bottom_2em gray_text">
@@ -48,7 +118,7 @@
             <% @attempts_by_exercise_id[exercise.socrates_id].each_with_index do |attempt, index| %>
               <div class="margin_1em">
                 <p><%= "Attempt #{index +1}:" %></p>
-                <p class="threequarter_size"><%= attempt.submitted_at.to_formatted_s(:long) %></p>
+                <p class="threequarter_size"><%= attempt.submitted_at.to_formatted_s(:long) if attempt.submitted_at %></p>
                 <%= simple_format(attempt.code, class: 'code_block pad_bottom_2em') %>
               </div>
             <% end %>
