@@ -15,7 +15,7 @@ UserExerciseAttemptDetailToggler = {
   }
 }
 
-UserExerciseAttemptToggler = {
+UserExerciseAttemptsToggler = {
   init: function() {
     $(document).on('click', '.exercise_sub_selector', this.toggle)
   },
@@ -37,11 +37,27 @@ UserExerciseAttemptToggler = {
   }
 }
 
+UserTabbedInterfaceController = {
+  init: function() {
+    $(document).on("click", ".user_data_tab span:last-child", function() {
+      UserTabbedInterfaceController.toggle($(this))
+    })
+  },
+
+  toggle: function(clickedObject) {
+    $('.active_tab').removeClass("active_tab")
+    clickedObject.closest('div').addClass("active_tab")
+    $('.attempts_wrapper').toggle()
+  }
+}
+
 
 $(document).ready(function() {
 
   UserExerciseAttemptDetailToggler.init()
 
-  UserExerciseAttemptToggler.init()
+  UserExerciseAttemptsToggler.init()
+
+  UserTabbedInterfaceController.init()
 
 })
