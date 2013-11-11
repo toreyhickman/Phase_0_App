@@ -17,6 +17,9 @@ end
 
 puts (Benchmark.realtime {
 
+# Seed weeks
+(1..12).each { |n| Week.find_or_create_by(name: "Week #{n}") }
+
 # Seed all of the cohorts
 cohorts = DBC::Cohort.all
 
