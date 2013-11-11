@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111035951) do
+ActiveRecord::Schema.define(version: 20131111045206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 20131111035951) do
     t.integer "week_id"
     t.integer "challenge_id"
   end
+
+  add_index "required_challenges", ["challenge_id"], name: "index_required_challenges_on_challenge_id", using: :btree
+  add_index "required_challenges", ["week_id"], name: "index_required_challenges_on_week_id", using: :btree
 
   create_table "users", primary_key: "socrates_id", force: true do |t|
     t.integer  "cohort_id"
