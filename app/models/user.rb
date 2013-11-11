@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :exercise_attempts
   has_many :attempted_exercises, through: :exercise_attempts, source: :exercise
+
+  has_many :challenge_attempts
+  has_many :attempted_challenges, through: :challenge_attempts, source: :challenge
 end
