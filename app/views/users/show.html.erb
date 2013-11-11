@@ -37,7 +37,7 @@
 
 
 <!-- Show challenge attempts -->
-<div class="attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
+<div id="challenges_wrapper" class="attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
 
   <% @weeks.each do |week| %>
     <% completed = week.challenges - @student.attempted_challenges == [] %>
@@ -91,7 +91,7 @@
 
 
 <!-- Show exercise attempts -->
-<div class="hidden attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
+<div id="exercises_wrapper" class="hidden attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
 
   <p class="pad_bottom_2em gray_text">
     <span class="exercise_sub_selector">All</span>

@@ -61,9 +61,13 @@ UserTabbedInterfaceController = {
   },
 
   toggle: function(clickedObject) {
+    str = $.trim(clickedObject.html()).toLowerCase()
+    console.log(str)
+
     $('.active_tab').removeClass("active_tab")
     clickedObject.closest('div').addClass("active_tab")
-    $('.attempts_wrapper').toggle()
+    $('.attempts_wrapper').hide()
+    $('#' + str + '_wrapper').show()
   }
 }
 
