@@ -5,7 +5,7 @@ require 'date'
 
 
 def calculate_current_week(start_date)
-  current_week = 12 - (Date.parse(start_date) - Date.today).to_i/7
+  current_week = 12 - ((Date.parse(start_date) - Date.today).to_i - 1)/7
 
   return 0 if current_week < 1
   return 13 if current_week > 12
