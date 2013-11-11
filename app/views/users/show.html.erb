@@ -3,20 +3,24 @@
 
 <%= render 'student_info_block', student: @student %>
 
-<h2 class="">
-  <span class="width25 inline_block">
-    <% if @student.attempted_exercises.uniq.count == @exercises.count %>
-      <i class="fa fa-check-circle green"></i>
-    <% else %>
-      <i class="fa fa-times-circle red"></i>
-    <% end %>
-  </span>
-  <span class="">
-    Exercises
-  </span>
-</h2>
 
-<div class="exercise_attempts_wrapper">
+<div class="user_data_tab pad_1em left active_tab">
+  <h2 class="inline">
+    <span class="width25 inline_block">
+      <% if @student.attempted_exercises.uniq.count == @exercises.count %>
+        <i class="fa fa-check-circle green"></i>
+      <% else %>
+        <i class="fa fa-times-circle red"></i>
+      <% end %>
+    </span>
+    <span>
+      Exercises
+    </span>
+  </h2>
+</div>
+
+
+<div class="exercise_attempts_wrapper clear_both pad_1em pad_top_2em border_middle_gray round_corners_8 round_corners_top_left_0">
 
   <p class="pad_bottom_2em gray_text">
     <span class="exercise_sub_selector">All</span>

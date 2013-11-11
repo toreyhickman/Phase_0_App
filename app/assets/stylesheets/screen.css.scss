@@ -50,6 +50,7 @@ $green: #206020;
 
 body {
   background-color: $light_gray;
+  padding-bottom: 100px;
 
   .container {
     margin-top: 64px;
@@ -135,8 +136,12 @@ header {
   overflow: auto;
 }
 
-.border_middle_gray {
-  border: 1px solid $middle_gray;
+.clear_both {
+  clear: both;
+}
+
+.pad_1em {
+  padding: 1em;
 }
 
 .pad_bottom_1em {
@@ -163,6 +168,10 @@ header {
   padding-left: 30px;
 }
 
+.pad_top_2em {
+  padding-top: 2em;
+}
+
 .margin_1em {
   margin: 1em;
 }
@@ -183,17 +192,6 @@ header {
   margin-top: 1em;
 }
 
-.hidden {
-  display: none;
-}
-
-.inline {
-  display: inline;
-}
-
-.inline_block {
-  display: inline-block;
-}
 
 
 /* $TYPOGRAPHY ****************************** */
@@ -282,6 +280,10 @@ h2 {
   border-radius: 8px;
 }
 
+.round_corners_top_left_0 {
+  border-top-left-radius: 0;
+}
+
 
 
 
@@ -308,6 +310,42 @@ h2 {
   color: $green;
 }
 
+.bg_middle_gray {
+  background-color: $middle_gray;
+}
+
 .bg_white {
   background-color: white;
+}
+
+
+.border_middle_gray {
+  border: 1px solid $middle_gray;
+}
+
+.border_gray {
+  border: 1px solid $dark_gray;
+}
+
+.user_data_tab {
+  border: 1px solid $middle_gray;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-bottom: -1px;
+}
+
+.active_tab {
+  border-bottom-color: $light_gray;
+}
+
+.hidden {
+  display: none;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline_block {
+  display: inline-block;
 }
