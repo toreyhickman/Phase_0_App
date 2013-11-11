@@ -1,4 +1,14 @@
 require 'benchmark'
+require 'date'
+
+def calculate_current_week(start_date)
+  current_week = 12 - (Date.parse(start_date) - Date.today).to_i/7
+
+  return 0 if current_week < 1
+  return 13 if current_week > 12
+  current_week
+end
+
 puts (Benchmark.realtime {
 
 # Seed all of the cohorts
@@ -13,6 +23,7 @@ cohorts.each do |c|
   cohort.location = c.location
   cohort.start_date = c.start_date
   cohort.in_session = c.in_session
+  cohort.current_week = calculate_current_week(c.start_date)
 
   cohort.save
 end
