@@ -7,7 +7,7 @@
   <div class="user_data_tab pad_1em left active_tab">
     <h2 class="inline">
       <span class="width25 inline_block">
-        <% if @weeks.map(&:challenges).reduce(&:+) - @student.attempted_challenges == [] %>
+        <% if @weeks[0..-2].map(&:challenges).reduce(&:+) - @student.attempted_challenges == [] %>
           <i class="fa fa-check-circle green"></i>
         <% else %>
           <i class="fa fa-times-circle red"></i>
@@ -45,7 +45,7 @@
     <div class="pad_bottom_2em gray_text week_wrapper <%= completed ? 'complete' : 'incomplete' %>">
 
       <div class="pad_bottom_1em">
-        <h2 class="inline">
+        <h2 class="inline pad_bottom_quarter_em">
           <span class="width25 inline_block">
             <% if completed %>
               <i class="fa fa-check-circle green"></i>
@@ -57,10 +57,11 @@
             <%= week.name %>
           </span>
         </h2>
+        <p class="challenges_toggle pad_left_30 threequarter_size">show challenges</p>
       </div>
 
       <% week.challenges.each do |challenge| %>
-        <div class="pad_bottom_1em pad_left_30">
+        <div class="hidden pad_bottom_1em pad_left_30">
           <p>
             <span class="width25 inline_block">
               <i class="fa <%= @student.attempted_challenges.include?(challenge) ? 'fa-check-circle green' : 'fa-times-circle red' %>"></i>

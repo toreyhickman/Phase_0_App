@@ -37,6 +37,22 @@ UserExerciseAttemptsToggler = {
   }
 }
 
+UserWeeklyChallengesToggler = {
+  init: function() {
+    $(document).on('click', '.challenges_toggle', function() {
+      UserWeeklyChallengesToggler.toggle($(this))
+    })
+  },
+
+  toggle: function(clickedObject) {
+    str = clickedObject.text()
+    new_str = str.indexOf("show") != -1 ? str.replace("show", "hide") : str.replace("hide", "show")
+    clickedObject.text(new_str)
+
+    clickedObject.parent().siblings('div').toggle()
+  }
+}
+
 UserTabbedInterfaceController = {
   init: function() {
     $(document).on("click", ".user_data_tab span:last-child", function() {
@@ -59,5 +75,7 @@ $(document).ready(function() {
   UserExerciseAttemptsToggler.init()
 
   UserTabbedInterfaceController.init()
+
+  UserWeeklyChallengesToggler.init()
 
 })
