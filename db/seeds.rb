@@ -102,13 +102,14 @@ challenges.each do |c|
   end
 end
 
-# Seed all exercise attempts
+# Seed all exercise and challenge attempts
 
 cohorts = Cohort.not_started.not_melt_or_hold
 
 cohorts.each do |cohort|
   cohort.students.each do |student|
 
+    # Exercises
     exercise_attempts = DBC::ExerciseAttempt.all(student.socrates_id)
 
     exercise_attempts.each do |exercise_attempt|
@@ -121,6 +122,24 @@ cohorts.each do |cohort|
       found_attempt = ExerciseAttempt.where(exercise_id: exercise_attempt.exercise_id, submitted_at: exercise_attempt.created_at)
 
       ExerciseAttempt.create(data) if found_attempt.empty?
+    end
+
+    # Challenges
+    challenge_attempts = DBC::ChallengeAttempt.all(student.socrates_id)
+
+    challenge_attempts.each do |challenge_attempt|
+
+      if phase_zero_challenge_ids.include?(challenge_attempt.challenge_id)
+
+        data = { challenge_id: challenge_attempt.challenge_id,
+                 user_id: student.socrates_id,
+                 repo: challenge_attempt.repo,
+                 submitted_at: challenge_attempt.finished_at }
+
+        found_attempt = ChallengeAttempt.where(challenge_id: challenge_attempt.challenge_id, submitted_at: challenge_attempt.finished_at)
+
+        ChallengeAttempt.create(data) if found_attempt.empty?
+      end
     end
   end
 end
