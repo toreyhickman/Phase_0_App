@@ -12,6 +12,18 @@ def calculate_current_week(start_date)
   current_week
 end
 
+def assign_weekly_challenges
+  { 1 => [417, 435, 418, 419, 420, 421, 436],
+    2 => [426, 427, 428, 429, 430, 425],
+    3 => [432, 431, 433, 434],
+    4 => [437, 438, 440, 439],
+    5 => [441, 442, 444, 55, 443] }
+end
+
+def find_phase_zero_challenge_ids
+  RequiredChallenge.all.pluck(:challenge_id)
+end
+
 
 
 
@@ -19,6 +31,15 @@ puts (Benchmark.realtime {
 
 # Seed weeks
 (1..12).each { |n| Week.find_or_create_by(name: "Week #{n}") }
+
+# Seed required challenges for each week
+RequiredChallenge.delete_all
+
+assign_weekly_challenges.each do |key, value|
+  value.each do |challenge_id|
+    RequiredChallenge.create(week_id: key, challenge_id: challenge_id)
+  end
+end
 
 # Seed all of the cohorts
 cohorts = DBC::Cohort.all
@@ -67,14 +88,18 @@ exercises.each do |e|
   exercise.save
 end
 
-# Seed all challenges
+# Seed all Phase 0 challenges
+phase_zero_challenge_ids = find_phase_zero_challenge_ids
+
 challenges = DBC::Challenge.all
 
 challenges.each do |c|
-  challenge = Challenge.find_or_initialize_by(socrates_id: c.id)
-  challenge.socrates_id = c.id unless challenge.socrates_id
-  challenge.name = c.name
-  challenge.save
+  if phase_zero_challenge_ids.include?(c.id)
+    challenge = Challenge.find_or_initialize_by(socrates_id: c.id)
+    challenge.socrates_id = c.id unless challenge.socrates_id
+    challenge.name = c.name
+    challenge.save
+  end
 end
 
 # Seed all exercise attempts
