@@ -35,7 +35,7 @@
           <i class="fa fa-times-circle red"></i>
         <% end %>
         <span class="pad_left_half_em">Challenges completed</span>
-        <span class="gray_text threequarter_size">(<%= "#{student.attempted_challenges.uniq.count} / #{challenges_due.count}" %>)</span>
+        <span class="gray_text threequarter_size">(<%= "#{challenges_due.count - (challenges_due - student.attempted_challenges).count} / #{challenges_due.count}" %>)</span>
       </p>
 
       <!-- Are exercises complete -->
