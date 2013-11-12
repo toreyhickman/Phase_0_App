@@ -9,11 +9,11 @@
       <div class="float_wrapper student_header_wrapper">
         <h2 class="left">
           <span class="gray_text">
-            <i class="fa fa-flag threequarter_size <%= 'red_flag' if student.intellectual_flag %>"></i>
+            <i class="fa fa-flag threequarter_size <%= student.intellectual_flag ? 'red' : 'green' %>"></i>
           </span>
 
           <span class="pad_left_half_em gray_text">
-            <i class="fa fa-flag threequarter_size <%= 'red_flag' if student.cultural_flag %>"></i>
+            <i class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
           </span>
         </h2>
         <p class="right student_contact_wrapper">
