@@ -45,7 +45,7 @@
     <div class="pad_bottom_2em gray_text week_wrapper <%= completed ? 'complete' : 'incomplete' %>">
 
       <div class="pad_bottom_1em">
-        <h2 class="inline pad_bottom_quarter_em">
+        <h2 class="inline pad_bottom_quarter_em dark_gray_text">
           <span class="width25 inline_block">
             <% if completed %>
               <i class="fa fa-check-circle green"></i>
@@ -57,7 +57,9 @@
             <%= week.name %>
           </span>
         </h2>
-        <p class="challenges_toggle pad_left_30 threequarter_size">show challenges</p>
+        <p class="challenges_toggle pad_left_30 threequarter_size">
+          show challenges <%= "(#{(week.challenges & @student.attempted_challenges).count} / #{week.challenges.count})" %>
+        </p>
       </div>
 
       <% week.challenges.each do |challenge| %>
