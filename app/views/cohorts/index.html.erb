@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <h2 class="gray_text margin_bottom_quarter_em "><%= week.name %> challenges.</h2>
+  <h2 class="gray_text margin_bottom_quarter_em "><%= week.name %> challenges</h2>
   <div class="gray_text pad_left_1em pad_bottom_4em"
     <% week.challenges.each do |challenge| %>
       <p><%= link_to challenge.name, "http://socrates.devbootcamp.com/challenges/#{challenge.socrates_id}" %></p>
