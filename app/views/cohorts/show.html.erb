@@ -3,6 +3,6 @@
 
 <% @cohort.students.sort_by(&:name).each do |student| %>
   <% unless student.admin %>
-    <%= render 'student_info_block', student: student %>
+    <%= render 'student_info_block', student: student, challenges_due: @challenges_due, exercises_due: @exercises_due %>
   <% end %>
 <% end %>

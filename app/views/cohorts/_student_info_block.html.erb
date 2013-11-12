@@ -2,14 +2,9 @@
   <div class="float_wrapper student_header_wrapper">
     <h2 class="left">
       <%= link_to student.name, user_path(student) %>
-      <span class="pad_left_half_em gray_text">
-        <i class="fa fa-flag threequarter_size <%= 'red' if student.intellectual_flag %>"></i>
-      </span>
-
-      <span class="pad_left_half_em gray_text">
-        <i class="fa fa-flag threequarter_size <%= 'red' if student.cultural_flag %>"></i>
-      </span>
     </h2>
+
+
     <p class="right student_contact_wrapper">
 
       <span class="pad_left_half_em">
@@ -32,12 +27,38 @@
     </div>
 
     <div class="student_bio_wrap pad_bottom_2em">
+      <!-- Are challenges up to date -->
       <p>
-        <% if student.bio == "" || student.bio == nil %>
-          No bio available for <%= student.name %>
+        <% if challenges_due - student.attempted_challenges.uniq == [] %>
+          <i class="fa fa-check-circle green"></i>
         <% else %>
-          <%= student.bio %>
+          <i class="fa fa-times-circle red"></i>
         <% end %>
+        <span class="pad_left_half_em">Challenges completed</span>
+        <span class="gray_text threequarter_size">(<%= "#{student.attempted_challenges.uniq.count} / #{challenges_due.count}" %>)</span>
+      </p>
+
+      <!-- Are exercises complete -->
+      <p>
+        <% if exercises_due - student.attempted_exercises.uniq == [] %>
+          <i class="fa fa-check-circle green"></i>
+        <% else %>
+          <i class="fa fa-times-circle red"></i>
+        <% end %>
+        <span class="pad_left_half_em">Exercises completed</span>
+        <span class="gray_text threequarter_size">(<%= "#{student.attempted_exercises.uniq.count} / #{exercises_due.count}" %>)</span>
+      </p>
+
+      <!-- Is the student an intellectual flag -->
+      <p>
+        <i class="fa fa-flag threequarter_size <%= student.intellectual_flag ? 'red' : 'green' %>"></i>
+        <span class="pad_left_half_em">Intellectual flag</span>
+      </p>
+
+      <!-- Is the student a cultural flag -->
+      <p>
+        <i class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
+        <span class="pad_left_half_em">Cultural flag</span>
       </p>
     </div>
   </div>
