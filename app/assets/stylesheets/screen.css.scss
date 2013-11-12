@@ -103,6 +103,10 @@ header {
   width: 100px;
 }
 
+.width200 {
+  width: 200px;
+}
+
 .width800 {
   width: 800px;
 }
@@ -387,4 +391,14 @@ h2 {
 
 .inline_block {
   display: inline-block;
+}
+
+.button {
+  background-color: $dark_gray;
+  color: $light_gray;
+  padding: 16px;
+
+  &:hover {
+    background-color: $middle_gray;
+  }
 }
