@@ -13,11 +13,17 @@ class SessionsController < ApplicationController
 
   def auth
     authenticated_user_attributes = request.env['omniauth.auth'].info
-    session[:socrates_id] = authenticated_user_attributes.id
-    token = request.env['omniauth.auth'].credentials
-    session[:oauth_token] = token_as_hash(token)
 
-    redirect_to cohorts_path
+    if User.find(authenticated_user_attributes.id).admin
+      session[:socrates_id] = authenticated_user_attributes.id
+      token = request.env['omniauth.auth'].credentials
+      session[:oauth_token] = token_as_hash(token)
+      redirect_to cohorts_path
+    else
+      redirect_to root_url, notice: "You do not have sufficient access privileges."
+    end
+
+
   end
 
   private
@@ -25,6 +31,10 @@ class SessionsController < ApplicationController
     { token: token.token,
       refresh_token: token.refresh_token,
       expires_at: token.expires_at }
+  end
+
+  def authorized_roles
+    ["admin", "ta", "editor"]
   end
 
 end
