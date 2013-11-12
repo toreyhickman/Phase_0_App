@@ -1,3 +1,21 @@
-<h1>Cohorts in Phase 0</h1>
+<% @weeks.each do |week| %>
+  <h1 class="margin_bottom_1em"><%= week.name %></h1>
+
+  <h2 class="gray_text margin_bottom_quarter_em">Cohorts</h2>
+  <div class="gray_text pad_bottom_2em pad_left_1em gray_text">
+    <% week.cohorts.each do |cohort| %>
+      <% unless cohort.name.match("Melt") || cohort.name.match("Hold") %>
+        <p><%= link_to cohort.name, cohort_path(cohort) %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2 class="gray_text margin_bottom_quarter_em "><%= week.name %> challenges.</h2>
+  <div class="gray_text pad_left_1em pad_bottom_4em"
+    <% week.challenges.each do |challenge| %>
+      <p><%= link_to challenge.name, "http://socrates.devbootcamp.com/challenges/#{challenge.socrates_id}" %></p>
+    <% end %>
+  </div>
+<% end %>
 
 

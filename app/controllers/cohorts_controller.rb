@@ -1,6 +1,7 @@
 class CohortsController < ApplicationController
 
   def index
+    @weeks = Week.includes(:cohorts, :challenges).all.select { |w| w.cohorts.any? }
   end
 
   def show
