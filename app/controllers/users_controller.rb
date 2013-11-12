@@ -9,4 +9,24 @@ class UsersController < ApplicationController
     @weeks = Week.includes(:challenges).where("id <= ?", @student.cohort.current_week)
     @attempts_by_challenge_id = @student.challenge_attempts.group_by(&:challenge_id)
   end
+
+  def toggle_flag
+    respond_to do |format|
+      format.json do
+        user = User.find(params[:user_id])
+
+        if params[:flag] == "intellectual_flag"
+          user.intellectual_flag = !user.intellectual_flag
+          color = "#{user.intellectual_flag ? 'red' : 'green'}"
+        else
+          user.cultural_flag = !user.cultural_flag
+          color = "#{user.cultural_flag ? 'red' : 'green'}"
+        end
+
+        user.save
+
+        render :json => {color: color}
+      end
+    end
+  end
 end

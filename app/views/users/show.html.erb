@@ -1,4 +1,4 @@
-<h1 class ="margin_bottom_quarter_em"><%= @student.name %></h1>
+<h1 id="student_name" class ="margin_bottom_quarter_em" data-student-id="<%= @student.socrates_id %>"><%= @student.name %></h1>
 <p class="margin_bottom_2em"><%= link_to @student.cohort.name, cohort_path(@student.cohort) %></p>
 
 <%= render 'student_info_block', student: @student %>

@@ -7,7 +7,9 @@ Phase0App::Application.routes.draw do
   get 'auth/:provider/callback', :to => 'sessions#auth'
 
   resources :cohorts, only: [:index, :show]
+
   resources :users, only: [:show]
+  post 'users/toggle_flag', :to => 'users#toggle_flag'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

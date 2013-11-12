@@ -8,12 +8,15 @@
     <div class="student_bio_wrap pad_bottom_2em">
       <div class="float_wrapper student_header_wrapper">
         <h2 class="left">
+
+          <!-- Intellectual flag -->
           <span class="gray_text">
-            <i class="fa fa-flag threequarter_size <%= student.intellectual_flag ? 'red' : 'green' %>"></i>
+            <i id="intellectual_flag" class="fa fa-flag threequarter_size <%= student.intellectual_flag ? 'red' : 'green' %>"></i>
           </span>
 
+          <!-- Cultural flag -->
           <span class="pad_left_half_em gray_text">
-            <i class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
+            <i id="cultural_flag" class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
           </span>
         </h2>
         <p class="right student_contact_wrapper">
