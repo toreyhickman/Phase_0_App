@@ -33,7 +33,7 @@
           </span>
 
           <span class="pad_left_half_em">
-            <%= mail_to student.email do %><i class="fa fa-envelope fa-lg"></i><% end %>
+            <%= mail_to student.email, raw("<i class='fa fa-envelope fa-lg'></i>"), subject: "Phase 0: Check In", cc: set_email_cc(student.cohort.location) %>
           </span>
         </p>
       </div>
