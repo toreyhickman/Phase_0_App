@@ -1,3 +1,6 @@
-# Phase 0 App
+# The Phase 0 App
 
-This app is being developed to help coordinate Phase 0.
+This app facilitates the coordination of Phase 0 by providing data on student progress through challenges and exercises.
+
+
+http://phasezero.herokuapp.com
