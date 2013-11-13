@@ -19,6 +19,9 @@ gem 'omniauth-dbc', :git => 'https://github.com/Devbootcamp/omniauth-dbc.git'
 # For DBC API
 gem 'dbc-ruby'
 
+# For heroku
+gem 'rails_12factor', group: :production
+
 
 group :development, :test do
   gem 'rspec-rails'
