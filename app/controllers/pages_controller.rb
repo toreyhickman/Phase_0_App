@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def index
     redirect_to cohorts_path and return if authenticated?
-    render layout: "landing"
+    render layout: "landing" and return if flash[:notice]
+    redirect_to signin_path and return
   end
 end
