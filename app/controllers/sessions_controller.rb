@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def sign_out
     session.clear
-    redirect_to '/'
+    redirect_to '/', notice: "You have signed out."
   end
 
   def auth
