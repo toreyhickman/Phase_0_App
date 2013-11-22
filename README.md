@@ -44,3 +44,12 @@ Now you should be able to run:
 $ bundle exec rake db:seed
 ```
 This will take a few minutes.
+
+
+#### Starting the app
+
+After configured, you should be able to run
+```
+$ bundle exec rails s
+```
+and see the app on localhost:3000
