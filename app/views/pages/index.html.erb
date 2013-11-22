@@ -1,8 +1,10 @@
 <p class="width200 center center_text pad_bottom_2em">The Phase 0 App</p>
 <%= link_to raw("<p class='width200 center center_text button round_corners_8 margin_bottom_2em'>Sign in with Socrates</p>"), signin_path %>
 
-<p class="width200 center center_text red">
-    <% flash.each do |name, msg| -%>
-      <%= msg %>
-    <% end -%>
-</p>
+<% unless flash.empty? %>
+  <p class="width200 center center_text red">
+      <% flash.each do |name, msg| -%>
+        <%= msg %>
+      <% end -%>
+  </p>
+<% end %>
