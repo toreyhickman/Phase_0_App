@@ -9,8 +9,9 @@ http://phasezero.herokuapp.com
 
 #### Environment variables
 
-This app uses auth.devbootcamp.com as an oauth provider, and you can find keys for local development
-[here](https://auth.devbootcamp.com/oauth/applications/31). You will need to add the following environment variables in your `./config/application.yml`. This file is ignored by git.
+This app uses auth.devbootcamp.com as an oauth provider, and you can find keys for local development [here](https://auth.devbootcamp.com/oauth/applications/31).
+
+You will need to add the following to `./config/application.yml`
 ```
 OAUTH_CLIENT_ID: "key titled 'application id' from linked page"
 OAUTH_CLIENT_SECRET: "key titled 'Secret' from linked page"
