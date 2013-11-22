@@ -3,7 +3,7 @@
 This app facilitates the coordination of Phase 0 by providing data on student progress through challenges and exercises.
 
 
-http://phasezero.herokuapp.com
+http://phasezero.devbootcamp.com
 
 ### Configuring your machine
 
