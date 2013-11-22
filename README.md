@@ -20,9 +20,7 @@ Because the app depends on these development keys, the app on runs `http://local
 
 #### Creating the database
 
-This application's database mirrors information
-
-You'll need postgres,
+You'll need postgres.
 ```
 $ brew update
 $ brew install postgres
@@ -33,6 +31,10 @@ With postgres running, the following should prepare your database:
 ```
 $ bundle exec rake db:create && rake db:schema:load
 ```
+
+This application's database is not a primary source of data. It uses the
+[dbc-ruby](https://github.com/Devbootcamp/dbc-ruby)
+gem to mirror information from the primary store.
 
 In order to seed, you need to go to the [developer site](https://developer.devbootcamp.com/account) and put your api key
 in your application.yml file
