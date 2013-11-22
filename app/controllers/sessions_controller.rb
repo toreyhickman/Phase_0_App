@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def sign_out
     session.clear
-    redirect_to '/', notice: "You have signed out."
+    redirect_to '/', flash: { signed_out: "You have signed out." }
   end
 
   def auth
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       session[:oauth_token] = token_as_hash(token)
       redirect_to cohorts_path
     else
-      redirect_to root_url, notice: "You do not have sufficient access privileges."
+      redirect_to root_url, flash: { not_teacher: "You do not have sufficient access privileges." }
     end
 
 
