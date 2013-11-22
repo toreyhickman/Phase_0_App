@@ -30,7 +30,7 @@ Run `$ brew info postgres` for help configure and run
 
 With postgres running, the following should prepare your database:
 ```
-$ bundle exec rake db:create && rake db:schema:load
+$ bundle exec rake db:create db:schema:load
 ```
 
 This application's database is not a primary source of data. It uses the
