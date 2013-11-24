@@ -5,6 +5,27 @@ This app facilitates the coordination of Phase 0 by providing data on student pr
 
 http://phasezero.devbootcamp.com
 
+### About the data
+
+This application's database **is not a primary source** of most of its data. It uses the
+[dbc-ruby](https://github.com/Devbootcamp/dbc-ruby)
+gem to mirror:
+ - cohorts
+ - users
+ - challenges
+ - excercises
+ - challenge attempts
+ - exercise attempts
+
+This application's database **is a primary source** for:
+ - required challenges (week-to-challenge association via `assign_weekly_challenges` hash in db/seeds.rb)
+ - cultural flags (per user)
+ - intellectual flags (per user)
+
+It uses mirrored data and in conjunction with required challenges **to derive**:
+ - fraction of required challenges completed
+ - fraction of exercises completed
+
 ### Configuring your machine
 
 #### Environment variables
@@ -34,10 +55,6 @@ With postgres running, the following should prepare your database:
 ```
 $ bundle exec rake db:create db:schema:load
 ```
-
-This application's database is not a primary source of data. It uses the
-[dbc-ruby](https://github.com/Devbootcamp/dbc-ruby)
-gem to mirror information from the primary store.
 
 In order to seed, you need to go to the [developer site](https://developer.devbootcamp.com/account) and put your api key
 in your application.yml file
