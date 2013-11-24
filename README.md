@@ -9,7 +9,9 @@ http://phasezero.devbootcamp.com
 
 #### Environment variables
 
-This app uses auth.devbootcamp.com as an oauth provider, and you can find keys for local development [here](https://auth.devbootcamp.com/oauth/applications/31).
+This app uses auth.devbootcamp.com as an oauth provider, and you can find keys for local development [here].
+
+[here]:https://auth.devbootcamp.com/oauth/applications/31
 
 You will need to add the following to `./config/application.yml`
 ```
@@ -56,3 +58,4 @@ After configured, you should be able to run
 $ bundle exec rails s
 ```
 and see the app on localhost:3000
+
