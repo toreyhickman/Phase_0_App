@@ -3,7 +3,7 @@
 This app facilitates the coordination of Phase 0 by providing data on student progress through challenges 
 and exercises.
 
-http://phasezero.devbootcamp.com
+https://phasezero.devbootcamp.com
 
 ### About the data
 
