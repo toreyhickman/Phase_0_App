@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
     @weeks = Week.includes(:challenges).where("id <= ?", @student.cohort.current_week)
     @attempts_by_challenge_id = @student.challenge_attempts.group_by(&:challenge_id)
+
+    @challenges_due = @weeks[0..-2].map(&:challenges).reduce(&:+)
+    @challenges_due = [] if @challenges_due == nil
   end
 
   def toggle_flag

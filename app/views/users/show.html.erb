@@ -7,7 +7,7 @@
   <div class="user_data_tab pad_1em left active_tab">
     <h2 class="inline">
       <span class="width25 inline_block">
-        <% if @weeks[0..-2].map(&:challenges).reduce(&:+) - @student.attempted_challenges == [] %>
+        <% if @challenges_due - @student.attempted_challenges == [] %>
           <i class="fa fa-check-circle green"></i>
         <% else %>
           <i class="fa fa-times-circle red"></i>
