@@ -3,6 +3,10 @@
 
 <%= render 'student_info_block', student: @student %>
 
+<p class="gray_text pad_bottom_1em">
+  Last submission: <%= @last_attempt.empty? ? "no attempts" : last_submission_date(@last_attempt) %>
+</p>
+
 <div class="user_data_tabs">
   <div class="user_data_tab pad_1em left active_tab">
     <h2 class="inline">
