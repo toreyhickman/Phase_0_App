@@ -60,6 +60,11 @@
         <i id="cultural_flag" class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
         <span class="pad_left_half_em">Cultural flag</span>
       </p>
+
+      <!-- Days since last exercise of challenge submitted -->
+      <p class="margin_top_1em gray_text">
+        <span>Last submission: <%= all_attempts.empty? ? "no attempts" : last_submission_date(all_attempts) %></span>
+      </p>
     </div>
   </div>
 </div>
