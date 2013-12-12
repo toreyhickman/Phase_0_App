@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
     @challenges_due = @weeks[0..-2].map(&:challenges).reduce(&:+)
     @challenges_due = [] if @challenges_due == nil
+
+    all_attempts = (@student.exercise_attempts + @student.challenge_attempts).reject { |x| x.submitted_at == nil }
+    @last_attempt = [all_attempts.max_by(&:submitted_at)]
   end
 
   def toggle_flag
