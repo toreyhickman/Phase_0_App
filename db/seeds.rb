@@ -127,6 +127,8 @@ challenges.each do |c|
 end
 
 # Seed all exercise and challenge attempts
+ExerciseAttempt.delete_all
+ChallengeAttempt.delete_all
 
 cohorts = Cohort.not_started.not_melt_or_hold
 
