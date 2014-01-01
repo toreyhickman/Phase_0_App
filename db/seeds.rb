@@ -53,7 +53,12 @@ assign_weekly_challenges.each do |key, value|
 end
 
 # Seed all of the cohorts
-cohorts = DBC::Cohort.all
+Cohort.delete_all
+
+cohorts = DBC::Cohort.all.reject(&:in_session).keep_if do |c|
+  year = c.name.slice(/\d{4}/)
+  year != nil && year.to_i >= 2014
+end
 
 cohorts.each do |c|
   cohort = Cohort.find_or_initialize_by(socrates_id: c.id)
