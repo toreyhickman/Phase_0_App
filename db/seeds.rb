@@ -35,6 +35,11 @@ def assign_exercises
   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 18, 19, 20, 21, 24, 25]
 end
 
+def dbc_admin?(dbc_user)
+  user_admin_roles = ["editor", "admin", "ta"] & dbc_user.roles
+  user_admin_roles.any?
+end
+
 
 
 
@@ -75,23 +80,25 @@ cohorts.each do |c|
 end
 
 # Seed all users
+User.delete_all
+
 users = DBC::User.all
+cohorts_in_db_ids = Cohort.all.map(&:socrates_id)
 
-users.each do |u|
-  user = User.find_or_initialize_by(socrates_id: u.id)
+users.each do |user|
+  admin_status = dbc_admin?(user)
 
-  user.socrates_id = u.id unless user.socrates_id
-  user.cohort_id = u.cohort_id
-  user.name = u.name
-  user.email = u.email
-  user.github = u.profile[:github]
-  user.twitter = u.profile[:twitter]
-  user.blog_url = u.profile[:blog]
-  user.bio = u.profile[:about]
-  user.admin = true if u.roles.include?("editor") || u.roles.include?("admin") || u.roles.include?("ta")
-
-
-  user.save
+  if cohorts_in_db_ids.include?(user.cohort_id) || admin_status
+    user = User.create(socrates_id: user.id,
+                       cohort_id: user.cohort_id,
+                       name: user.name,
+                       email: user.email,
+                       github: user.profile[:github],
+                       twitter: user.profile[:twitter],
+                       blog_url: user.profile[:blog],
+                       bio: user.profile[:about],
+                       admin: admin_status)
+  end
 end
 
 # Seed all exercises
