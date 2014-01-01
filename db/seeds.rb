@@ -126,17 +126,20 @@ cohorts.each do |cohort|
 
     exercise_attempts.each do |exercise_attempt|
 
-      data = { exercise_id: exercise_attempt.exercise_id,
-               user_id: student.socrates_id,
-               code: exercise_attempt.code,
-               submitted_at: exercise_attempt.created_at }
+      if assign_exercises.include?(exercise_attempt.exercise_id)
 
-      found_attempt = ExerciseAttempt.where(exercise_id: exercise_attempt.exercise_id, submitted_at: exercise_attempt.created_at)
+        data = { exercise_id: exercise_attempt.exercise_id,
+                 user_id: student.socrates_id,
+                 code: exercise_attempt.code,
+                 submitted_at: exercise_attempt.created_at }
 
-      if found_attempt.nil?
-        ExerciseAttempt.create(data)
-      elsif Date.parse(exercise_attempt.created_at) > found_attempt.submitted_at
-        found_attempt.update_attributes(data)
+        found_attempt = ExerciseAttempt.where(exercise_id: exercise_attempt.exercise_id, user_id: student.socrates_id).first
+
+        if found_attempt.nil?
+          ExerciseAttempt.create(data)
+        elsif Date.parse(exercise_attempt.created_at) > found_attempt.submitted_at
+          found_attempt.update_attributes(code: data[:code], submitted_at: data[:submitted_at])
+        end
       end
     end
 
