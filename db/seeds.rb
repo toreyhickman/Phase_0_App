@@ -31,6 +31,10 @@ def find_phase_zero_challenge_ids
   assign_weekly_challenges.values.flatten
 end
 
+def assign_exercises
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 18, 19, 20, 21, 24, 25]
+end
+
 
 
 
@@ -86,13 +90,14 @@ users.each do |u|
 end
 
 # Seed all exercises
+Exercise.delete_all
+
 exercises = DBC::Exercise.all
 
 exercises.each do |e|
-  exercise = Exercise.find_or_initialize_by(socrates_id: e.id)
-  exercise.socrates_id = e.id unless exercise.socrates_id
-  exercise.title = e.title
-  exercise.save
+  if assign_exercises.include?(e.id)
+    Exercise.create(socrates_id: e.id, title: e.title)
+  end
 end
 
 # Seed all Phase 0 challenges
@@ -128,7 +133,11 @@ cohorts.each do |cohort|
 
       found_attempt = ExerciseAttempt.where(exercise_id: exercise_attempt.exercise_id, submitted_at: exercise_attempt.created_at)
 
-      ExerciseAttempt.create(data) if found_attempt.empty?
+      if found_attempt.nil?
+        ExerciseAttempt.create(data)
+      elsif Date.parse(exercise_attempt.created_at) > found_attempt.submitted_at
+        found_attempt.update_attributes(data)
+      end
     end
 
     # Challenges
