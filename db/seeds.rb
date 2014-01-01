@@ -28,7 +28,7 @@ def assign_weekly_challenges
 end
 
 def find_phase_zero_challenge_ids
-  RequiredChallenge.all.pluck(:challenge_id)
+  assign_weekly_challenges.values.flatten
 end
 
 
