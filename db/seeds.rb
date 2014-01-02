@@ -169,9 +169,13 @@ cohorts.each do |cohort|
                  repo: challenge_attempt.repo,
                  submitted_at: challenge_attempt.finished_at }
 
-        found_attempt = ChallengeAttempt.where(challenge_id: challenge_attempt.challenge_id, submitted_at: challenge_attempt.finished_at)
+        found_attempt = ChallengeAttempt.where(challenge_id: challenge_attempt.challenge_id, user_id: student.socrates_id).first
 
-        ChallengeAttempt.create(data) if found_attempt.empty?
+        if found_attempt.nil?
+          ChallengeAttempt.create(data)
+        elsif challenge_attempt.finished_at.nil? || found_attempt.submitted_at.nil? || Date.parse(challenge_attempt.finished_at) > found_attempt.submitted_at
+          found_attempt.update_attributes(data)
+        end
       end
     end
   end
