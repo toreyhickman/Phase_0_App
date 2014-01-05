@@ -6,7 +6,7 @@ FlagToggler = {
   },
 
   toggle: function(clickedObject) {
-    var socrates_id = $('#student_name').data("student-id")
+    var socrates_id = clickedObject.data("student-id")
     var data = {user_id: socrates_id, flag: clickedObject.attr('id')}
 
     $.post('/users/toggle_flag', data, function(response){

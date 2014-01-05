@@ -51,13 +51,13 @@
 
       <!-- Is the student an intellectual flag -->
       <p>
-        <i id="intellectual_flag" class="fa fa-flag threequarter_size <%= student.intellectual_flag ? 'red' : 'green' %>"></i>
+        <i id="intellectual_flag" data-student-id="<%= student.socrates_id %>" class="fa fa-flag threequarter_size <%= student.intellectual_flag ? 'red' : 'green' %>"></i>
         <span class="pad_left_half_em">Intellectual flag</span>
       </p>
 
       <!-- Is the student a cultural flag -->
       <p>
-        <i id="cultural_flag" class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
+        <i id="cultural_flag" data-student-id="<%= student.socrates_id %>" class="fa fa-flag threequarter_size <%= student.cultural_flag ? 'red' : 'green' %>"></i>
         <span class="pad_left_half_em">Cultural flag</span>
       </p>
 
