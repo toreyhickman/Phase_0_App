@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def last_submission_date(attempts)
-    most_recent_attempt = attempts.reject { |x| x.submitted_at == nil }.max_by(&:submitted_at)
+    most_recent_attempt = attempts.select(&:submitted_at).max_by(&:submitted_at)
     days = calculate_days_since(most_recent_attempt.submitted_at)
 
     case days
