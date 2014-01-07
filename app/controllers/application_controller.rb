@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
   end
 
   def divide_by_location(cohorts)
-    cohorts_by_location = { "San Francisco" => [], "Chicago" => [], "New York" => [] }
-    cohorts.each do |cohort|
+    cohorts_by_location = { "San Francisco" => [], "Chicago" => [], "New York City" => [] }
+    cohorts.sort_by(&:start_date).each do |cohort|
       cohorts_by_location[cohort.location] << cohort
     end
     cohorts_by_location
