@@ -12,6 +12,6 @@ class Cohort < ActiveRecord::Base
   end
 
   def cohort_name_regex
-    /(\w+\s?\w+)(\s)(2014)/
+    /(\D+)(\s)(\d{4})/
   end
 end
